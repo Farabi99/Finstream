@@ -1,0 +1,160 @@
+# ============================================================================
+# FINSTREAM DOCKER COMPOSE — Run Everything With One Command
+# ============================================================================
+#
+# This file defines ALL the services needed to run FinStream:
+#   1. postgres   — Database for persistent storage (metrics, signals, instruments)
+#   2. redis      — Cache for fast reads + Pub/Sub for WebSocket horizontal scaling
+#   3. processor  — Background worker that generates data, calculates metrics, writes to DB
+#   4. api        — REST API + Swagger UI + WebSocket server (the part users interact with)
+#
+# USAGE:
+#   docker-compose up --build          # Build and start everything
+#   docker-compose up --build -d       # Same, but run in background (detached)
+#   docker-compose down                # Stop everything (data is preserved in volume)
+#   docker-compose down -v             # Stop everything AND delete database data
+#   docker-compose logs -f api         # Follow logs for just the API
+#   docker-compose logs -f processor   # Follow logs for just the Processor
+#
+# ONCE RUNNING:
+#   Swagger UI:  http://localhost:5106/swagger
+#   Health:      http://localhost:5106/health
+#   WebSocket:   ws://localhost:5106/ws/stream
+# ============================================================================
+
+services:
+  # ──────────────────────────────────────────────────────────────────────────
+  # POSTGRESQL — Persistent Database
+  # ──────────────────────────────────────────────────────────────────────────
+  # Stores instruments, historical metrics, signal events, and rules.
+  # Uses a Docker volume ("pgdata") so data survives container restarts.
+  # Alpine variant is smaller (~80MB vs ~400MB for the full image).
+  postgres:
+    image: postgres:16-alpine
+    container_name: finstream-postgres
+    environment:
+      POSTGRES_DB: finstream         # Name of the database to create
+      POSTGRES_USER: postgres        # Database username
+      POSTGRES_PASSWORD: postgres    # Database password (change in production!)
+    volumes:
+      - pgdata:/var/lib/postgresql/data   # Persist data across restarts
+    # Uncomment the lines below to access PostgreSQL from your host machine
+    # (e.g., using pgAdmin or DBeaver at localhost:5432)
+    # ports:
+    #   - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - finstream-net
+
+  # ──────────────────────────────────────────────────────────────────────────
+  # REDIS — Cache + Pub/Sub Backplane
+  # ──────────────────────────────────────────────────────────────────────────
+  # Two roles:
+  #   1. CACHE: Stores the latest metrics for lightning-fast API reads
+  #   2. PUB/SUB: Broadcasts WebSocket messages to all API server instances
+  # Alpine variant is tiny (~30MB).
+  redis:
+    image: redis:7-alpine
+    container_name: finstream-redis
+    # Uncomment the lines below to access Redis from your host machine
+    # (e.g., using Redis Insight or redis-cli at localhost:6379)
+    # ports:
+    #   - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - finstream-net
+
+  # ──────────────────────────────────────────────────────────────────────────
+  # PROCESSOR — The "Write Side" (CQRS Command)
+  # ──────────────────────────────────────────────────────────────────────────
+  # A headless background worker with NO HTTP endpoints. It:
+  #   - Generates fake market data (MarketFeedService)
+  #   - Calculates SMA, EMA, Volatility (MetricsProcessorService)
+  #   - Evaluates trading rules and creates signals
+  #   - Batch-writes to PostgreSQL (BatchDbWriterService)
+  #   - Pushes latest state to Redis cache
+  #   - Broadcasts updates to Redis Pub/Sub channel
+  #
+  # depends_on with "service_healthy" ensures Postgres and Redis are FULLY
+  # ready before the Processor tries to connect. Without this, the Processor
+  # would crash with "connection refused" errors.
+  processor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: processor             # Use Stage 2b from the Dockerfile
+    container_name: finstream-processor
+    depends_on:
+      postgres:
+        condition: service_healthy   # Wait for Postgres to accept connections
+      redis:
+        condition: service_healthy   # Wait for Redis to respond to PING
+    environment:
+      # Override appsettings.json values via environment variables.
+      # .NET's configuration system maps "__" (double underscore) to ":" in JSON keys.
+      # So "ConnectionStrings__Postgres" becomes "ConnectionStrings:Postgres" in config.
+      DatabaseProvider: Postgres
+      ConnectionStrings__Postgres: "Host=postgres;Database=finstream;Username=postgres;Password=postgres"
+      ConnectionStrings__Redis: "redis:6379"
+    restart: unless-stopped          # Auto-restart if it crashes
+    networks:
+      - finstream-net
+
+  # ──────────────────────────────────────────────────────────────────────────
+  # API — The "Read Side" (CQRS Query) + Swagger UI
+  # ──────────────────────────────────────────────────────────────────────────
+  # The only container with an exposed port. It serves:
+  #   - REST API endpoints (GET /api/instruments, etc.)
+  #   - Swagger UI documentation (http://localhost:5106/swagger)
+  #   - WebSocket streaming (ws://localhost:5106/ws/stream)
+  #   - Health check (http://localhost:5106/health)
+  #
+  # It does ZERO data processing — it only reads from Redis cache and
+  # PostgreSQL database, keeping it fast and horizontally scalable.
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: api                   # Use Stage 2a from the Dockerfile
+    container_name: finstream-api
+    ports:
+      - "5106:5106"                 # Expose API to your browser
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development   # Enables Swagger UI
+      DatabaseProvider: Postgres
+      ConnectionStrings__Postgres: "Host=postgres;Database=finstream;Username=postgres;Password=postgres"
+      ConnectionStrings__Redis: "redis:6379"
+    restart: unless-stopped
+    networks:
+      - finstream-net
+
+# ──────────────────────────────────────────────────────────────────────────
+# VOLUMES — Persistent storage that survives container restarts
+# ──────────────────────────────────────────────────────────────────────────
+# "pgdata" stores PostgreSQL data files. It persists across:
+#   - docker-compose down     → DATA KEPT
+#   - docker-compose down -v  → DATA DELETED
+volumes:
+  pgdata:
+
+# ──────────────────────────────────────────────────────────────────────────
+# NETWORKS — Internal communication between containers
+# ──────────────────────────────────────────────────────────────────────────
+# All containers are on the same virtual network so they can find each
+# other by container name (e.g., "redis:6379" instead of an IP address).
+networks:
+  finstream-net:
+    driver: bridge

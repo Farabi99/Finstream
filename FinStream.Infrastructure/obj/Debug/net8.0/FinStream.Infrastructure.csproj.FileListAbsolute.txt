@@ -1,0 +1,17 @@
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Infrastructure\obj\Debug\net8.0\FinStream.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Infrastructure\obj\Debug\net8.0\FinStream.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Infrastructure\obj\Debug\net8.0\FinStream.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Infrastructure\obj\Debug\net8.0\FinStream.Infrastructure.AssemblyInfo.cs
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Infrastructure\obj\Debug\net8.0\FinStream.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Infrastructure\bin\Debug\net8.0\FinStream.Infrastructure.deps.json
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Infrastructure\bin\Debug\net8.0\FinStream.Infrastructure.dll
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Infrastructure\bin\Debug\net8.0\FinStream.Infrastructure.pdb
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Infrastructure\bin\Debug\net8.0\FinStream.Application.dll
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Infrastructure\bin\Debug\net8.0\FinStream.Domain.dll
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Infrastructure\bin\Debug\net8.0\FinStream.Application.pdb
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Infrastructure\bin\Debug\net8.0\FinStream.Domain.pdb
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Infrastructure\obj\Debug\net8.0\FinStrea.E821F912.Up2Date
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Infrastructure\obj\Debug\net8.0\FinStream.Infrastructure.dll
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Infrastructure\obj\Debug\net8.0\refint\FinStream.Infrastructure.dll
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Infrastructure\obj\Debug\net8.0\FinStream.Infrastructure.pdb
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Infrastructure\obj\Debug\net8.0\ref\FinStream.Infrastructure.dll

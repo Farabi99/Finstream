@@ -1,0 +1,11 @@
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Domain\bin\Debug\net8.0\FinStream.Domain.deps.json
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Domain\bin\Debug\net8.0\FinStream.Domain.dll
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Domain\bin\Debug\net8.0\FinStream.Domain.pdb
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Domain\obj\Debug\net8.0\FinStream.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Domain\obj\Debug\net8.0\FinStream.Domain.AssemblyInfoInputs.cache
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Domain\obj\Debug\net8.0\FinStream.Domain.AssemblyInfo.cs
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Domain\obj\Debug\net8.0\FinStream.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Domain\obj\Debug\net8.0\FinStream.Domain.dll
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Domain\obj\Debug\net8.0\refint\FinStream.Domain.dll
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Domain\obj\Debug\net8.0\FinStream.Domain.pdb
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Domain\obj\Debug\net8.0\ref\FinStream.Domain.dll

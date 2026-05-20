@@ -1,0 +1,15 @@
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Application\bin\Debug\net8.0\FinStream.Application.deps.json
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Application\bin\Debug\net8.0\FinStream.Application.dll
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Application\bin\Debug\net8.0\FinStream.Application.pdb
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Application\bin\Debug\net8.0\FinStream.Domain.dll
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Application\bin\Debug\net8.0\FinStream.Domain.pdb
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Application\obj\Debug\net8.0\FinStream.Application.csproj.AssemblyReference.cache
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Application\obj\Debug\net8.0\FinStream.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Application\obj\Debug\net8.0\FinStream.Application.AssemblyInfoInputs.cache
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Application\obj\Debug\net8.0\FinStream.Application.AssemblyInfo.cs
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Application\obj\Debug\net8.0\FinStream.Application.csproj.CoreCompileInputs.cache
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Application\obj\Debug\net8.0\FinStrea.DE4F84CE.Up2Date
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Application\obj\Debug\net8.0\FinStream.Application.dll
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Application\obj\Debug\net8.0\refint\FinStream.Application.dll
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Application\obj\Debug\net8.0\FinStream.Application.pdb
+C:\Users\Farabi\OneDrive\Desktop\Road to Swiss\Project\Claude\Finstream\FinStream.Application\obj\Debug\net8.0\ref\FinStream.Application.dll

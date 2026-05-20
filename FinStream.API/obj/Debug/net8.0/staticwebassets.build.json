@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "r2kVhsLNMJJjS/j0KOCIGu+cSk1lGzyU0is2kd2ifQ0=",
+  "Source": "FinStream.API",
+  "BasePath": "_content/FinStream.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
